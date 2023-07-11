@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2018-present, MNK Group. All rights reserved.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="@color/background_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_large_margin"
+            android:layout_marginRight="@dimen/layout_large_margin"
+            android:layout_marginBottom="@dimen/layout_large_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edit_username"
+                        android:layout_width="match_parent"
+                        android:enabled="false"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/navigation_buttons_violet"
+                        android:ems="10"
+                        android:hint="Username"
+                        android:inputType="textCapWords"
+                        android:nextFocusDown="@id/edit_email"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_medium_grey"
+                        android:textSize="@dimen/medium_layout_textSize" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_small_margin"
+                    android:backgroundTint="@color/navigation_buttons_violet"
+                    android:ems="10"
+                    android:hint="@string/email_address_hint"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/edit_phone_number"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_medium_grey"
+                    android:textSize="@dimen/medium_layout_textSize" />
+
+                <EditText
+                    android:id="@+id/edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_small_margin"
+                    android:backgroundTint="@color/navigation_buttons_violet"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/edit_phone_number"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_medium_grey"
+                    android:textSize="@dimen/medium_layout_textSize" />
+
+                <EditText
+                    android:id="@+id/edit_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_small_margin"
+                    android:backgroundTint="@color/navigation_buttons_violet"
+                    android:ems="10"
+                    android:hint="@string/phone_number_hint"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:textColor="@color/text_black"
+                    android:textColorHint="@color/text_medium_grey"
+                    android:textSize="@dimen/medium_layout_textSize" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/layout_large_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edit_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/layout_small_margin"
+                        android:layout_weight="1.5"
+                        android:backgroundTint="@color/navigation_buttons_violet"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:hint="Shipping Address"
+                        android:inputType="textCapWords"
+                        android:textColor="@color/text_black"
+                        android:textColorHint="@color/text_medium_grey"
+                        android:textSize="@dimen/medium_layout_textSize" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="@dimen/button_large_margin"
+        android:layout_marginRight="@dimen/button_large_margin"
+        android:layout_marginBottom="@dimen/button_large_margin"
+        android:background="@drawable/purple_button_selector"
+        android:text="Update Account"
+        android:textAllCaps="false"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/medium_layout_textSize"
+        android:textStyle="bold"/>
+
+
+</RelativeLayout>
+
