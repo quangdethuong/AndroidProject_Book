@@ -165,4 +165,14 @@
     <string name="coupon">Coupon:</string>
     <string name="coupon_code">Coupon Code</string>
     <string name="discount_in_currency">-$ 0.0</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="sign_in_account">Sign in to your</string>
+
+
+
+    <string name="register_text">Register Now</string>
+
 </resources>

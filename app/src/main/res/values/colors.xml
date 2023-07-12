@@ -12,9 +12,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="dark_red">#CA0000</color>
 
+    <color name="red">#F02E00</color>
     <color name="purple">#d580ff</color>
-    <color name="red">#ff0000</color>
+<!--    <color name="red">#ff0000</color>-->
     <color name="colorGreen">#2cdca0</color>
     <color name="colorAlphaGreen">#4b2cdca0</color>
     <color name="colorGreenDark">#21c58d</color>
@@ -33,6 +35,8 @@
     <color name="background_fc_grey">#fcfcfc</color>
     <color name="background_e8_grey">#FFB6B8BF</color>
     <color name="background_transparent">#0000</color>
+    <color name="background_pink">#f879a7</color>
+
     <!-- Text -->
     <color name="text_black">#ff000000</color>
 

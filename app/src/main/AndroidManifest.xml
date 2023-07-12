@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codingstuff.shoeapp">
+    package="com.codingstuff.BookApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,21 +15,21 @@
         android:theme="@style/Theme.ShoeApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".views.EditAccountActivity"
+            android:name="com.codingstuff.BookApp.views.EditAccountActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".views.RegisterActivity"
+            android:name="com.codingstuff.BookApp.views.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".views.AboutActivity"
+            android:name="com.codingstuff.BookApp.views.AboutActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -41,33 +41,33 @@
             android:value="AIzaSyASjjxYZnBUKZVpcmJlUGHISXphDrfTeA0" />
 
         <activity
-            android:name=".views.MapActivity"
+            android:name="com.codingstuff.BookApp.views.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.codingstuff.BookApp.DashboardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".DrawerBaseActivity"
+            android:name="com.codingstuff.BookApp.DrawerBaseActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".views.CartActivity"
+            android:name="com.codingstuff.BookApp.views.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".views.DetailedActivity"
+            android:name="com.codingstuff.BookApp.views.DetailedActivity"
             android:exported="false" />
         <activity
-            android:name=".views.LoginActivity"
+            android:name="com.codingstuff.BookApp.views.LoginActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".views.MainActivity"
+            android:name="com.codingstuff.BookApp.views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
