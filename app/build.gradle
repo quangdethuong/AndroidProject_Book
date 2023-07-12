@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.codingstuff.shoeapp"
+        applicationId "com.codingstuff.bookapp"
         minSdk 22
         targetSdk 32
         versionCode 1
