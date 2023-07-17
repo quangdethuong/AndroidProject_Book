@@ -6,7 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 
 import java.util.List;
 
@@ -14,21 +14,21 @@ import java.util.List;
 public interface CartDAO {
 
     @Insert
-    void insertCartItem(ShoeCart shoeCart);
+    void insertCartItem(ItemCart itemCart);
 
-    @Query("SELECT * FROM shoe_table")
-    LiveData<List<ShoeCart>> getAllCartItems();
+    @Query("SELECT * FROM cart_table")
+    LiveData<List<ItemCart>> getAllCartItems();
 
     @Delete
-    void deleteCartItem(ShoeCart shoeCart);
+    void deleteCartItem(ItemCart itemCart);
 
-    @Query("UPDATE shoe_table SET quantity=:quantity WHERE id=:id")
+    @Query("UPDATE cart_table SET quantity=:quantity WHERE id=:id")
     void updateQuantity(int id , int quantity);
 
-    @Query("UPDATE shoe_table SET totalItemPrice=:totalItemPrice WHERE id=:id")
+    @Query("UPDATE cart_table SET totalItemPrice=:totalItemPrice WHERE id=:id")
     void updatePrice(int id , double totalItemPrice);
 
-    @Query("DELETE FROM shoe_table")
+    @Query("DELETE FROM cart_table")
     void deleteAllItems();
 
 }

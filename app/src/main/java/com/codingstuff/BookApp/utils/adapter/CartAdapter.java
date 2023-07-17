@@ -12,21 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codingstuff.BookApp.R;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler> {
 
     private CartClickedListeners cartClickedListeners;
-    private List<ShoeCart> shoeCartList;
+    private List<ItemCart> itemCartList;
 
     public CartAdapter(CartClickedListeners cartClickedListeners) {
         this.cartClickedListeners = cartClickedListeners;
     }
 
-    public void setShoeCartList(List<ShoeCart> shoeCartList) {
-        this.shoeCartList = shoeCartList;
+    public void setShoeCartList(List<ItemCart> itemCartList) {
+        this.itemCartList = itemCartList;
         notifyDataSetChanged();
     }
 
@@ -40,21 +40,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
     @Override
     public void onBindViewHolder(@NonNull CartViewHodler holder, int position) {
 
-        ShoeCart shoeCart = shoeCartList.get(position);
+        ItemCart itemCart = itemCartList.get(position);
         Glide.with(holder.itemView.getContext())
-                .load(shoeCart.getShoeImage())
+                .load(itemCart.getShoeImage())
                 .into(holder.shoeImageView);
-        holder.shoeNameTv.setText(shoeCart.getShoeName());
-        holder.shoeBrandNameTv.setText(shoeCart.getShoeBrandName());
+        holder.shoeNameTv.setText(itemCart.getShoeName());
+        holder.shoeBrandNameTv.setText(itemCart.getShoeBrandName());
 //        holder.shoeSize.setText("Size: " + shoeCart.getShoeSize());
-        holder.shoeQuantity.setText(shoeCart.getQuantity() + "");
-        holder.shoePriceTv.setText("Price: " + shoeCart.getTotalItemPrice() + "$");
+        holder.shoeQuantity.setText(itemCart.getQuantity() + "");
+        holder.shoePriceTv.setText("Price: " + itemCart.getTotalItemPrice() + "$");
 
 
         holder.deleteShoeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartClickedListeners.onDeleteClicked(shoeCart);
+                cartClickedListeners.onDeleteClicked(itemCart);
             }
         });
 
@@ -62,24 +62,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
         holder.addQuantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartClickedListeners.onPlusClicked(shoeCart);
+                cartClickedListeners.onPlusClicked(itemCart);
             }
         });
 
         holder.minusQuantityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartClickedListeners.onMinusClicked(shoeCart);
+                cartClickedListeners.onMinusClicked(itemCart);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        if (shoeCartList == null) {
+        if (itemCartList == null) {
             return 0;
         } else {
-            return shoeCartList.size();
+            return itemCartList.size();
         }
     }
 
@@ -106,10 +106,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
     }
 
     public interface CartClickedListeners {
-        void onDeleteClicked(ShoeCart shoeCart);
+        void onDeleteClicked(ItemCart itemCart);
 
-        void onPlusClicked(ShoeCart shoeCart);
+        void onPlusClicked(ItemCart itemCart);
 
-        void onMinusClicked(ShoeCart shoeCart);
+        void onMinusClicked(ItemCart itemCart);
     }
 }

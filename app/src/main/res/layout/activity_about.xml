@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/background_pink"
     tools:context=".views.AboutActivity">
     <ImageView
         android:layout_width="120dp"
@@ -27,7 +28,7 @@
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:text="Our shop located at Can Tho FPT University\nContact Us:\nEmail: jamespham.work@gmail.com\nHotline: 0827788062"
+        android:text="Our shop located at Can Tho FPT University\nHotline: 0827788062"
         android:textColor="@color/black"
         android:textSize="15dp"/>
 </LinearLayout>

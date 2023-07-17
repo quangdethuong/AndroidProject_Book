@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.codingstuff.BookApp.R;
 import com.codingstuff.BookApp.utils.adapter.CartAdapter;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 import com.codingstuff.BookApp.viewmodel.CartViewModel;
 
 import java.util.List;
@@ -36,13 +36,13 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
 
         initializeVariables();
 
-        cartViewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
+        cartViewModel.getAllCartItems().observe(this, new Observer<List<ItemCart>>() {
             @Override
-            public void onChanged(List<ShoeCart> shoeCarts) {
+            public void onChanged(List<ItemCart> itemCarts) {
                 double price = 0;
-                cartAdapter.setShoeCartList(shoeCarts);
-                for (int i=0;i<shoeCarts.size();i++){
-                    price = price + shoeCarts.get(i).getTotalItemPrice();
+                cartAdapter.setShoeCartList(itemCarts);
+                for (int i = 0; i< itemCarts.size(); i++){
+                    price = price + itemCarts.get(i).getTotalItemPrice();
                 }
                 totalCartPriceTv.setText(String.valueOf(String.format("%.2f", price)));
             }
@@ -78,27 +78,27 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
     }
 
     @Override
-    public void onDeleteClicked(ShoeCart shoeCart) {
-        cartViewModel.deleteCartItem(shoeCart);
+    public void onDeleteClicked(ItemCart itemCart) {
+        cartViewModel.deleteCartItem(itemCart);
     }
 
     @Override
-    public void onPlusClicked(ShoeCart shoeCart) {
-        int quantity = shoeCart.getQuantity() + 1;
-        cartViewModel.updateQuantity(shoeCart.getId() , quantity);
-        cartViewModel.updatePrice(shoeCart.getId() , quantity*shoeCart.getShoePrice());
+    public void onPlusClicked(ItemCart itemCart) {
+        int quantity = itemCart.getQuantity() + 1;
+        cartViewModel.updateQuantity(itemCart.getId() , quantity);
+        cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getShoePrice());
         cartAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onMinusClicked(ShoeCart shoeCart) {
-        int quantity = shoeCart.getQuantity() - 1;
+    public void onMinusClicked(ItemCart itemCart) {
+        int quantity = itemCart.getQuantity() - 1;
         if (quantity != 0){
-            cartViewModel.updateQuantity(shoeCart.getId() , quantity);
-            cartViewModel.updatePrice(shoeCart.getId() , quantity*shoeCart.getShoePrice());
+            cartViewModel.updateQuantity(itemCart.getId() , quantity);
+            cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getShoePrice());
             cartAdapter.notifyDataSetChanged();
         }else{
-            cartViewModel.deleteCartItem(shoeCart);
+            cartViewModel.deleteCartItem(itemCart);
         }
 
     }

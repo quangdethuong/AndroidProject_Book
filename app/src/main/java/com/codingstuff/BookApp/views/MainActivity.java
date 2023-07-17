@@ -43,7 +43,7 @@ import com.codingstuff.BookApp.R;
 import com.codingstuff.BookApp.databinding.ActivityMainBinding;
 import com.codingstuff.BookApp.utils.adapter.CategoryAdapter;
 import com.codingstuff.BookApp.utils.adapter.ShoeItemAdapter;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 import com.codingstuff.BookApp.utils.model.Item;
 import com.codingstuff.BookApp.viewmodel.CartViewModel;
 import com.google.android.material.snackbar.Snackbar;
@@ -58,7 +58,7 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
     private ShoeItemAdapter adapter;
     private CategoryAdapter categoryAdapter;
     private CartViewModel viewModel;
-    private List<ShoeCart> shoeCartList;
+    private List<ItemCart> itemCartList;
     BufferedReader readerSession;
     FileInputStream inputStream;
     private ImageButton sortBtn;
@@ -191,10 +191,10 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
     protected void onResume() {
         super.onResume();
 
-        viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
+        viewModel.getAllCartItems().observe(this, new Observer<List<ItemCart>>() {
             @Override
-            public void onChanged(List<ShoeCart> shoeCarts) {
-                shoeCartList.addAll(shoeCarts);
+            public void onChanged(List<ItemCart> itemCarts) {
+                itemCartList.addAll(itemCarts);
             }
         });
     }
@@ -273,7 +273,7 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
         cartImageView.setVisibility(View.VISIBLE);
         searchEditText.setVisibility(View.VISIBLE);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
-        shoeCartList = new ArrayList<>();
+        itemCartList = new ArrayList<>();
         viewModel = new ViewModelProvider(this).get(CartViewModel.class);
         ItemList = new ArrayList<>();
         recyclerView = findViewById(R.id.mainRecyclerView);
@@ -298,11 +298,11 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
         reloadShop();
     }
     public void setCartCount(){
-        viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
+        viewModel.getAllCartItems().observe(this, new Observer<List<ItemCart>>() {
             @Override
-            public void onChanged(List<ShoeCart> shoeCarts) {
-                if (shoeCarts != null) {
-                    MainActivity.cartCount = shoeCarts.size();
+            public void onChanged(List<ItemCart> itemCarts) {
+                if (itemCarts != null) {
+                    MainActivity.cartCount = itemCarts.size();
                     cartCountTv.setText(MainActivity.cartCount + "");
                 }
             }

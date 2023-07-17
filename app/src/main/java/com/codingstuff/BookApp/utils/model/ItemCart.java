@@ -3,8 +3,8 @@ package com.codingstuff.BookApp.utils.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "shoe_table")
-public class ShoeCart {
+@Entity(tableName = "cart_table")
+public class ItemCart {
 
     @PrimaryKey(autoGenerate = true)
     private int id;

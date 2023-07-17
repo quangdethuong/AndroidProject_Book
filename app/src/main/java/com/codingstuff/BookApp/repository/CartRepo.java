@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.codingstuff.BookApp.dao.CartDAO;
 import com.codingstuff.BookApp.database.CartDatabase;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -15,10 +15,10 @@ import java.util.concurrent.Executors;
 public class CartRepo {
 
     private CartDAO cartDAO;
-    private LiveData<List<ShoeCart>> allCartItemsLiveData;
+    private LiveData<List<ItemCart>> allCartItemsLiveData;
     private Executor executor = Executors.newSingleThreadExecutor();
 
-    public LiveData<List<ShoeCart>> getAllCartItemsLiveData() {
+    public LiveData<List<ItemCart>> getAllCartItemsLiveData() {
         return allCartItemsLiveData;
     }
 
@@ -27,20 +27,20 @@ public class CartRepo {
         allCartItemsLiveData = cartDAO.getAllCartItems();
     }
 
-    public void insertCartItem(ShoeCart shoeCart){
+    public void insertCartItem(ItemCart itemCart){
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                cartDAO.insertCartItem(shoeCart);
+                cartDAO.insertCartItem(itemCart);
             }
         });
     }
 
-    public void deleteCartItem(ShoeCart shoeCart){
+    public void deleteCartItem(ItemCart itemCart){
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                cartDAO.deleteCartItem(shoeCart);
+                cartDAO.deleteCartItem(itemCart);
             }
         });
     }

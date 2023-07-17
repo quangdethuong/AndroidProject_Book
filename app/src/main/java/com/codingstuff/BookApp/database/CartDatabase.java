@@ -7,9 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.codingstuff.BookApp.dao.CartDAO;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 
-@Database(entities = {ShoeCart.class} , version = 5)
+@Database(entities = {ItemCart.class} , version = 1)
 public abstract class CartDatabase extends RoomDatabase {
 
     public abstract CartDAO cartDAO();

@@ -22,7 +22,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/adidas_ultraboost" />
+            app:srcCompat="@drawable/kodietdungsohai" />
 
         <TextView
             android:id="@+id/eachShoeName"

@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.codingstuff.BookApp.R;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 import com.codingstuff.BookApp.utils.model.Item;
 import com.codingstuff.BookApp.viewmodel.CartViewModel;
 
@@ -31,7 +31,7 @@ public class DetailedActivity extends AppCompatActivity {
     private Item item;
     private Spinner sizeSpinner;
     private CartViewModel viewModel;
-    private List<ShoeCart> shoeCartList;
+    private List<ItemCart> itemCartList;
     private String[] sizeOptions = {"Select Size", "37", "38", "39", "40", "41", "42", "43", "44", "45"};
 
     @Override
@@ -46,10 +46,10 @@ public class DetailedActivity extends AppCompatActivity {
 //        sizeSpinner.setAdapter(adapter);
 
 
-        viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
+        viewModel.getAllCartItems().observe(this, new Observer<List<ItemCart>>() {
             @Override
-            public void onChanged(List<ShoeCart> shoeCarts) {
-                shoeCartList.addAll(shoeCarts);
+            public void onChanged(List<ItemCart> itemCarts) {
+                itemCartList.addAll(itemCarts);
             }
         });
 
@@ -82,38 +82,38 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
     private void insertToRoom(){
-        ShoeCart shoeCart = new ShoeCart();
-        shoeCart.setShoeName(item.getProductName());
-        shoeCart.setShoeBrandName(item.getCategory());
-        shoeCart.setShoePrice(item.getPrice());
-        shoeCart.setShoeImage(item.getImage());
-        shoeCart.setAuthor(item.getAuthor());
+        ItemCart itemCart = new ItemCart();
+        itemCart.setShoeName(item.getProductName());
+        itemCart.setShoeBrandName(item.getCategory());
+        itemCart.setShoePrice(item.getPrice());
+        itemCart.setShoeImage(item.getImage());
+        itemCart.setAuthor(item.getAuthor());
 
 //        shoeCart.setShoeSize(sizeSpinner.getSelectedItem().toString());
 
         final int[] quantity = {1};
         final int[] id = new int[1];
 
-        if (!shoeCartList.isEmpty()){
-            for(int i=0;i<shoeCartList.size();i++){
-                if (shoeCart.getShoeName().equals(shoeCartList.get(i).getShoeName()) ){
-                    quantity[0] = shoeCartList.get(i).getQuantity();
+        if (!itemCartList.isEmpty()){
+            for(int i = 0; i< itemCartList.size(); i++){
+                if (itemCart.getShoeName().equals(itemCartList.get(i).getShoeName()) ){
+                    quantity[0] = itemCartList.get(i).getQuantity();
                     quantity[0]++;
-                    id[0] = shoeCartList.get(i).getId();
+                    id[0] = itemCartList.get(i).getId();
                 }
             }
         }
 
         if (quantity[0]==1){
-            shoeCart.setQuantity(quantity[0]);
-            shoeCart.setTotalItemPrice(quantity[0]*shoeCart.getShoePrice());
-            viewModel.insertCartItem(shoeCart);
+            itemCart.setQuantity(quantity[0]);
+            itemCart.setTotalItemPrice(quantity[0]* itemCart.getShoePrice());
+            viewModel.insertCartItem(itemCart);
         }else{
 
             viewModel.updateQuantity(id[0] ,quantity[0]);
-            viewModel.updatePrice(id[0] , quantity[0]*shoeCart.getShoePrice());
+            viewModel.updatePrice(id[0] , quantity[0]* itemCart.getShoePrice());
         }
-        MainActivity.cartCount = shoeCartList.size();
+        MainActivity.cartCount = itemCartList.size();
         startActivity(new Intent(DetailedActivity.this , CartActivity.class));
     }
 
@@ -130,7 +130,7 @@ public class DetailedActivity extends AppCompatActivity {
 
     private void initializeVariables() {
 
-        shoeCartList = new ArrayList<>();
+        itemCartList = new ArrayList<>();
 //        sizeSpinner = findViewById(R.id.size_spinner);
         ImageView = findViewById(R.id.detailActivityIV);
         ProductNameTV = findViewById(R.id.detailActivityProductNameTv);

@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.codingstuff.BookApp.repository.CartRepo;
-import com.codingstuff.BookApp.utils.model.ShoeCart;
+import com.codingstuff.BookApp.utils.model.ItemCart;
 
 import java.util.List;
 
@@ -19,15 +19,15 @@ public class CartViewModel extends AndroidViewModel {
         cartRepo = new CartRepo(application);
     }
 
-    public LiveData<List<ShoeCart>> getAllCartItems() {
+    public LiveData<List<ItemCart>> getAllCartItems() {
         return cartRepo.getAllCartItemsLiveData();
     }
-    public List<ShoeCart> getAll() {
+    public List<ItemCart> getAll() {
         return cartRepo.getAllCartItemsLiveData().getValue();
     }
 
-    public void insertCartItem(ShoeCart shoeCart) {
-        cartRepo.insertCartItem(shoeCart);
+    public void insertCartItem(ItemCart itemCart) {
+        cartRepo.insertCartItem(itemCart);
     }
 
     public void updateQuantity(int id, int quantity) {
@@ -38,8 +38,8 @@ public class CartViewModel extends AndroidViewModel {
         cartRepo.updatePrice(id, price);
     }
 
-    public void deleteCartItem(ShoeCart shoeCart) {
-        cartRepo.deleteCartItem(shoeCart);
+    public void deleteCartItem(ItemCart itemCart) {
+        cartRepo.deleteCartItem(itemCart);
     }
 
     public void deleteAllCartItems() {

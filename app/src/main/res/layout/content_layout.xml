@@ -13,7 +13,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/cardview_dark_background"
+
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="5dp"
                 android:background="@android:color/white"
-                android:hint="  Search Shoe"
+                android:hint="  Search book"
                 android:textColorHint="@color/light_gray"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@id/cartIv"
