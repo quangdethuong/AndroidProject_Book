@@ -16,11 +16,11 @@ import com.codingstuff.BookApp.utils.model.Item;
 
 import java.util.List;
 
-public class ShoeItemAdapter extends RecyclerView.Adapter<ShoeItemAdapter.ItemViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> ItemList;
     private ItemClickedListeners itemClickedListeners;
-    public ShoeItemAdapter(ItemClickedListeners itemClickedListeners){
+    public ItemAdapter(ItemClickedListeners itemClickedListeners){
         this.itemClickedListeners = itemClickedListeners;
     }
     public void setItemList(List<Item> ItemList){
@@ -71,7 +71,6 @@ public class ShoeItemAdapter extends RecyclerView.Adapter<ShoeItemAdapter.ItemVi
         private CardView cardView;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-
             cardView = itemView.findViewById(R.id.eachShoeCardView);
             shoeNameTv = itemView.findViewById(R.id.eachShoeName);
             shoeImageView = itemView.findViewById(R.id.eachShoeIv);

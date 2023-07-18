@@ -175,4 +175,7 @@
 
     <string name="register_text">Register Now</string>
 
+    <string name="channel_name">Chanel 1</string>
+    <string name="channel_description">This is chanel 1</string>
+
 </resources>

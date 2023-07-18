@@ -5,14 +5,13 @@ import android.os.Parcelable;
 
 public class Item implements Parcelable {
 
-    private String shoeName, shoeBrandName, shoeDescription;
-    private String shoeImage;
-    private double shoePrice;
+
 
 
     private String productName, category, description,author;
     private String image;
     private double price;
+
 
     public Item(String productName, String category, String description, String author, String image, double price) {
         this.productName = productName;
@@ -104,17 +103,9 @@ public class Item implements Parcelable {
 
 
 
-    public String getShoeDescription() {
-        return shoeDescription;
-    }
 
-    public void setShoeDescription(String shoeDescription) {
-        this.shoeDescription = shoeDescription;
-    }
 
-    public String getShoeName() {
-        return shoeName;
-    }
+
 
 //    public void setShoeName(String shoeName) {
 //        this.shoeName = shoeName;

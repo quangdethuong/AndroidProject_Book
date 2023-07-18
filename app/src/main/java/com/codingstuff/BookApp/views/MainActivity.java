@@ -42,7 +42,7 @@ import com.codingstuff.BookApp.DrawerBaseActivity;
 import com.codingstuff.BookApp.R;
 import com.codingstuff.BookApp.databinding.ActivityMainBinding;
 import com.codingstuff.BookApp.utils.adapter.CategoryAdapter;
-import com.codingstuff.BookApp.utils.adapter.ShoeItemAdapter;
+import com.codingstuff.BookApp.utils.adapter.ItemAdapter;
 import com.codingstuff.BookApp.utils.model.ItemCart;
 import com.codingstuff.BookApp.utils.model.Item;
 import com.codingstuff.BookApp.viewmodel.CartViewModel;
@@ -50,12 +50,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
 
-public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.ItemClickedListeners, CategoryAdapter.CategoryClickedListeners {
+public class MainActivity extends DrawerBaseActivity implements ItemAdapter.ItemClickedListeners, CategoryAdapter.CategoryClickedListeners {
 
     public static final int REQUEST_CODE_DETAIL_ACTIVITY = 1;
     private RecyclerView recyclerView;
     private List<Item> ItemList;
-    private ShoeItemAdapter adapter;
+    private ItemAdapter adapter;
     private CategoryAdapter categoryAdapter;
     private CartViewModel viewModel;
     private List<ItemCart> itemCartList;
@@ -234,7 +234,9 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
                 String shoeImage = shoeItemJsonObject.getString("Image");
                 String author = shoeItemJsonObject.getString("Author");
                 double shoePrice = shoeItemJsonObject.getDouble("Price");
-                Item shoeItem = new Item(shoeName, shoeBrandName, shoeDescription,author, shoeImage, shoePrice);
+                String username = shoeItemJsonObject.getString("UserName");
+
+                Item shoeItem = new Item(shoeName, shoeBrandName, shoeDescription,author, shoeImage, shoePrice );
                 ItemList.add(shoeItem);
             }
             /*String response = responseBuilder.toString();
@@ -280,7 +282,7 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
-        adapter = new ShoeItemAdapter(this);
+        adapter = new ItemAdapter(this);
         categoryAdapter = new CategoryAdapter(this);
     }
 
@@ -318,7 +320,7 @@ public class MainActivity extends DrawerBaseActivity implements ShoeItemAdapter.
             adapter.setItemList(rs);
         } else {
             for (Item i: rs) {
-                if(i.getShoeName().toLowerCase(Locale.ROOT).contains(query))
+                if(i.getProductName().toLowerCase(Locale.ROOT).contains(query))
                     searchRs.add(i);
             }
             Log.d("testnew2", currentCategory);

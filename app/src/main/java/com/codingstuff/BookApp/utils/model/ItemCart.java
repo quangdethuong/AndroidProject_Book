@@ -9,12 +9,12 @@ public class ItemCart {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String shoeName, shoeBrandName;
+    private String shoeName, shoeBrandName, productName,category;
 //    private String shoeSize;
-    private String shoeImage;
+    private String shoeImage,image;
 
     private String author;
-    private double shoePrice;
+    private double shoePrice,price;
 
     public String getAuthor() {
         return author;
