@@ -206,14 +206,12 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
 
     public List<Item> getShop(String apiUrl) {
         List<Item> ItemList = new ArrayList<Item>();
-
         try {
             // Open connection to API URL
             URL url = new URL(apiUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json");
-
             // Read response as input stream
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder responseBuilder = new StringBuilder();
@@ -237,24 +235,7 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
                 Item shoeItem = new Item(shoeName, shoeBrandName, shoeDescription,author, shoeImage, shoePrice );
                 ItemList.add(shoeItem);
             }
-            /*String response = responseBuilder.toString();
-            JSONObject shoeItemsJsonObject = new JSONObject(response);
-
-            for (int i = 0; i < shoeItemsJsonObject.length(); i++) {
-                String key = Integer.toString(i);
-                JSONObject shoeItemJsonObject = shoeItemsJsonObject.getJSONObject(key);
-                String shoeName = shoeItemJsonObject.getString("shoeName");
-                String shoeBrandName = shoeItemJsonObject.getString("shoeBrandName");
-                String shoeDescription = shoeItemJsonObject.getString("shoeDescription");
-                String shoeImage = shoeItemJsonObject.getString("shoeImage");
-                double shoePrice = shoeItemJsonObject.getDouble("shoePrice");
-                ShoeItem shoeItem = new ShoeItem(shoeName, shoeBrandName, shoeDescription, shoeImage, shoePrice);
-                shoeItemList.add(shoeItem);
-            }*/
-
-            // Disconnect from API URL
             connection.disconnect();
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
