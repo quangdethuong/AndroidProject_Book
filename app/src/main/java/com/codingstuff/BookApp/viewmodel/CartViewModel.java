@@ -14,9 +14,12 @@ public class CartViewModel extends AndroidViewModel {
 
     private CartRepo cartRepo;
 
+
+
     public CartViewModel(@NonNull Application application) {
         super(application);
         cartRepo = new CartRepo(application);
+
     }
 
     public LiveData<List<ItemCart>> getAllCartItems() {

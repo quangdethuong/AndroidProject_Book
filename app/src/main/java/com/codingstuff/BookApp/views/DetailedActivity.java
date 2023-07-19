@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.codingstuff.BookApp.MyNotification;
 import com.codingstuff.BookApp.R;
+import com.codingstuff.BookApp.utils.model.Account;
 import com.codingstuff.BookApp.utils.model.ItemCart;
 import com.codingstuff.BookApp.utils.model.Item;
 import com.codingstuff.BookApp.viewmodel.CartViewModel;
@@ -38,6 +39,7 @@ public class DetailedActivity extends AppCompatActivity {
     private TextView ProductNameTV, CategoryTV, PriceTV, DescriptionTV,AuthorTV;
     private AppCompatButton addToCartBtn;
     private Item item;
+    private Account account;
     private Spinner sizeSpinner;
     private CartViewModel viewModel;
     private List<ItemCart> itemCartList;
@@ -101,6 +103,7 @@ public class DetailedActivity extends AppCompatActivity {
         itemCart.setPrice(item.getPrice());
         itemCart.setImage(item.getImage());
         itemCart.setAuthor(item.getAuthor());
+
 
 //        shoeCart.setShoeSize(sizeSpinner.getSelectedItem().toString());
 

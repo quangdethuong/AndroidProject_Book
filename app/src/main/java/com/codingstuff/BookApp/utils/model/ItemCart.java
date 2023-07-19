@@ -9,6 +9,7 @@ public class ItemCart {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+
     private String productName, categoryName;
 //    private String shoeSize;
     private String image;

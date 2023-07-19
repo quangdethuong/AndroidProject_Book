@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.codingstuff.BookApp.dao.CartDAO;
 import com.codingstuff.BookApp.utils.model.ItemCart;
 
-@Database(entities = {ItemCart.class} , version = 3)
+@Database(entities = {ItemCart.class} , version = 5)
 public abstract class CartDatabase extends RoomDatabase {
 
     public abstract CartDAO cartDAO();

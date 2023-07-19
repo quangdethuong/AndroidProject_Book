@@ -387,7 +387,7 @@
                 android:backgroundTint="@color/dark_red"
                 android:drawableRight="@drawable/baseline_maps_home_work_24"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textColor="#8c8c8c"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

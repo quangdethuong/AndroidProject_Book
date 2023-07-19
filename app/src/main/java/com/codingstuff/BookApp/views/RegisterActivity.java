@@ -114,21 +114,31 @@ public class RegisterActivity extends AppCompatActivity{
      */
     private boolean canRegister() {
         if (username.getText().toString().isEmpty() &&
-                email.getText().toString().isEmpty() && phone.getText().toString().isEmpty() &&
+                email.getText().toString().isEmpty() &&
+                phone.getText().toString().isEmpty() &&
                 address.getText().toString().isEmpty() &&
-                password.getText().toString().isEmpty() && confirmPassword.getText().toString().isEmpty()) {
+                password.getText().toString().isEmpty() &&
+                confirmPassword.getText().toString().isEmpty()) {
             Utils.showSingleButtonAlertWithoutTitle(this, getResources().getString(R.string.alert_all_fields_are_required));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                username.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-                email.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-                phone.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-                address.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-                password.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-                confirmPassword.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
-            }
-            checkBox.setButtonDrawable(ContextCompat.getDrawable(this, R.drawable.checkbox_not_checked_selector));
+            // ...
             return false;
         }
+//        if (username.getText().toString().isEmpty() &&
+//                email.getText().toString().isEmpty() && phone.getText().toString().isEmpty() &&
+//                address.getText().toString().isEmpty() &&
+//                password.getText().toString().isEmpty() && confirmPassword.getText().toString().isEmpty()) {
+//            Utils.showSingleButtonAlertWithoutTitle(this, getResources().getString(R.string.alert_all_fields_are_required));
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                username.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//                email.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//                phone.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//                address.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//                password.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//                confirmPassword.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+//            }
+//            checkBox.setButtonDrawable(ContextCompat.getDrawable(this, R.drawable.checkbox_not_checked_selector));
+//            return false;
+//        }
 
         if (!EditTextValidation.isFirstNameValid(username.getText().toString().trim()).equals("Success")) {
             Utils.showSingleButtonAlert(this, getResources().getString(R.string.invalid_input), EditTextValidation.isFirstNameValid(username.getText().toString().trim()));

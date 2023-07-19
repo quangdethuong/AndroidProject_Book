@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.codingstuff.BookApp.dao.CartDAO;
 import com.codingstuff.BookApp.database.CartDatabase;
+import com.codingstuff.BookApp.utils.model.Account;
 import com.codingstuff.BookApp.utils.model.ItemCart;
 
 import java.util.List;
@@ -15,8 +16,11 @@ import java.util.concurrent.Executors;
 public class CartRepo {
 
     private CartDAO cartDAO;
+    private Account account = new Account();
     private LiveData<List<ItemCart>> allCartItemsLiveData;
     private Executor executor = Executors.newSingleThreadExecutor();
+
+    private ItemCart item;
 
     public LiveData<List<ItemCart>> getAllCartItemsLiveData() {
         return allCartItemsLiveData;
