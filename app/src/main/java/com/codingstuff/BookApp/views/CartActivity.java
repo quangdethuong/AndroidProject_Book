@@ -86,7 +86,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
     public void onPlusClicked(ItemCart itemCart) {
         int quantity = itemCart.getQuantity() + 1;
         cartViewModel.updateQuantity(itemCart.getId() , quantity);
-        cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getShoePrice());
+        cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getPrice());
         cartAdapter.notifyDataSetChanged();
     }
 
@@ -95,7 +95,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         int quantity = itemCart.getQuantity() - 1;
         if (quantity != 0){
             cartViewModel.updateQuantity(itemCart.getId() , quantity);
-            cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getShoePrice());
+            cartViewModel.updatePrice(itemCart.getId() , quantity* itemCart.getPrice());
             cartAdapter.notifyDataSetChanged();
         }else{
             cartViewModel.deleteCartItem(itemCart);

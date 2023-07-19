@@ -96,10 +96,10 @@ public class DetailedActivity extends AppCompatActivity {
 
     private void insertToRoom(){
         ItemCart itemCart = new ItemCart();
-        itemCart.setShoeName(item.getProductName());
-        itemCart.setShoeBrandName(item.getCategory());
-        itemCart.setShoePrice(item.getPrice());
-        itemCart.setShoeImage(item.getImage());
+        itemCart.setProductName(item.getProductName());
+        itemCart.setCategoryName(item.getCategory());
+        itemCart.setPrice(item.getPrice());
+        itemCart.setImage(item.getImage());
         itemCart.setAuthor(item.getAuthor());
 
 //        shoeCart.setShoeSize(sizeSpinner.getSelectedItem().toString());
@@ -109,7 +109,7 @@ public class DetailedActivity extends AppCompatActivity {
 
         if (!itemCartList.isEmpty()){
             for(int i = 0; i< itemCartList.size(); i++){
-                if (itemCart.getShoeName().equals(itemCartList.get(i).getShoeName()) ){
+                if (itemCart.getProductName().equals(itemCartList.get(i).getProductName()) ){
                     quantity[0] = itemCartList.get(i).getQuantity();
                     quantity[0]++;
                     id[0] = itemCartList.get(i).getId();
@@ -119,12 +119,12 @@ public class DetailedActivity extends AppCompatActivity {
 
         if (quantity[0]==1){
             itemCart.setQuantity(quantity[0]);
-            itemCart.setTotalItemPrice(quantity[0]* itemCart.getShoePrice());
+            itemCart.setTotalItemPrice(quantity[0]* itemCart.getPrice());
             viewModel.insertCartItem(itemCart);
         }else{
 
             viewModel.updateQuantity(id[0] ,quantity[0]);
-            viewModel.updatePrice(id[0] , quantity[0]* itemCart.getShoePrice());
+            viewModel.updatePrice(id[0] , quantity[0]* itemCart.getPrice());
         }
         MainActivity.cartCount = itemCartList.size();
         startActivity(new Intent(DetailedActivity.this , CartActivity.class));

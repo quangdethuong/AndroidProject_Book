@@ -42,10 +42,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
 
         ItemCart itemCart = itemCartList.get(position);
         Glide.with(holder.itemView.getContext())
-                .load(itemCart.getShoeImage())
+                .load(itemCart.getImage())
                 .into(holder.shoeImageView);
-        holder.shoeNameTv.setText(itemCart.getShoeName());
-        holder.shoeBrandNameTv.setText(itemCart.getShoeBrandName());
+        holder.shoeNameTv.setText(itemCart.getProductName());
+        holder.shoeBrandNameTv.setText(itemCart.getCategoryName());
 //        holder.shoeSize.setText("Size: " + shoeCart.getShoeSize());
         holder.shoeQuantity.setText(itemCart.getQuantity() + "");
         holder.shoePriceTv.setText("Price: " + itemCart.getTotalItemPrice() + "$");

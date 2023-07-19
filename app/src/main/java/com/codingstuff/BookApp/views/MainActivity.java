@@ -234,8 +234,6 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
                 String shoeImage = shoeItemJsonObject.getString("Image");
                 String author = shoeItemJsonObject.getString("Author");
                 double shoePrice = shoeItemJsonObject.getDouble("Price");
-                String username = shoeItemJsonObject.getString("UserName");
-
                 Item shoeItem = new Item(shoeName, shoeBrandName, shoeDescription,author, shoeImage, shoePrice );
                 ItemList.add(shoeItem);
             }
