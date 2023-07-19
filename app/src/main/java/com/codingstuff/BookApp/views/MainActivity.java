@@ -200,11 +200,11 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
     }
 
     private void setUpList() {
-        new GetShoeShopTask().execute("http://10.0.2.2:80/prmapi/BookShop.php");
+        new GetShopTask().execute("http://10.0.2.2:80/prmapi/BookShop.php");
     }
 
 
-    public List<Item> getShoeShop(String apiUrl) {
+    public List<Item> getShop(String apiUrl) {
         List<Item> ItemList = new ArrayList<Item>();
 
         try {
@@ -223,17 +223,17 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
             }
             reader.close();
 
-            // Convert response to ShoeItem list
+            // Convert response to Item list
             String response = responseBuilder.toString();
             JSONArray shoeItemsJsonArray = new JSONArray(response);
             for (int i = 0; i < shoeItemsJsonArray.length(); ++i) {
-                JSONObject shoeItemJsonObject = shoeItemsJsonArray.getJSONObject(i);
-                String shoeName = shoeItemJsonObject.getString("ProductName");
-                String shoeBrandName = shoeItemJsonObject.getString("Category");
-                String shoeDescription = shoeItemJsonObject.getString("Description");
-                String shoeImage = shoeItemJsonObject.getString("Image");
-                String author = shoeItemJsonObject.getString("Author");
-                double shoePrice = shoeItemJsonObject.getDouble("Price");
+                JSONObject itemJsonObject = shoeItemsJsonArray.getJSONObject(i);
+                String shoeName = itemJsonObject.getString("ProductName");
+                String shoeBrandName = itemJsonObject.getString("Category");
+                String shoeDescription = itemJsonObject.getString("Description");
+                String shoeImage = itemJsonObject.getString("Image");
+                String author = itemJsonObject.getString("Author");
+                double shoePrice = itemJsonObject.getDouble("Price");
                 Item shoeItem = new Item(shoeName, shoeBrandName, shoeDescription,author, shoeImage, shoePrice );
                 ItemList.add(shoeItem);
             }
@@ -311,7 +311,7 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
 
     private void searchItem() {
         String query = searchEditText.getText().toString().trim().toLowerCase(Locale.ROOT);
-        List<Item> rs = findShoeByCate();
+        List<Item> rs = findItemByCate();
         List<Item> searchRs = new ArrayList<>();
         if (query.equals("") || query == null || query == ""){
             Log.d("testnew", ItemList.size()+"");
@@ -327,40 +327,7 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
 
         // Perform search operation using the query
     }
-    /*@Override
-    public void onAddToCartBtnClicked(ShoeItem shoeItem) {
-        ShoeCart shoeCart = new ShoeCart();
-        shoeCart.setShoeName(shoeItem.getShoeName());
-        shoeCart.setShoeBrandName(shoeItem.getShoeBrandName());
-        shoeCart.setShoePrice(shoeItem.getShoePrice());
-        shoeCart.setShoeImage(shoeItem.getShoeImage());
 
-        final int[] quantity = {1};
-        final int[] id = new int[1];
-
-        if (!shoeCartList.isEmpty()) {
-            for (int i = 0; i < shoeCartList.size(); i++) {
-                if (shoeCart.getShoeName().equals(shoeCartList.get(i).getShoeName())) {
-                    quantity[0] = shoeCartList.get(i).getQuantity();
-                    quantity[0]++;
-                    id[0] = shoeCartList.get(i).getId();
-                }
-            }
-        }
-
-        Log.d("TAG", "onAddToCartBtnClicked: " + quantity[0]);
-
-        if (quantity[0] == 1) {
-            shoeCart.setQuantity(quantity[0]);
-            shoeCart.setTotalItemPrice(quantity[0] * shoeCart.getShoePrice());
-            viewModel.insertCartItem(shoeCart);
-        } else {
-            viewModel.updateQuantity(id[0], quantity[0]);
-            viewModel.updatePrice(id[0], quantity[0] * shoeCart.getShoePrice());
-        }
-
-        makeSnackBar("Item Added To Cart");
-    }*/
 
     private void makeSnackBar(String msg) {
         Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_SHORT)
@@ -385,7 +352,7 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
         Log.d("sortsort", currentSort + " - " + dollar_deInt + " - " + dollar_inInt);
 
         List<Item> sortList = new ArrayList<>();
-        sortList = findShoeByCate();
+        sortList = findItemByCate();
         if (currentSort == dollarInt){
             sortBtn.setImageDrawable(dollar_in);
             Collections.sort(sortList, new Comparator<Item>() {
@@ -414,11 +381,11 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
     public interface ShoeShopCallback {
         void onShoeShopReceived(List<Item> ItemList);
     }
-    private class GetShoeShopTask extends AsyncTask<String, Void, List<Item>> {
+    private class GetShopTask extends AsyncTask<String, Void, List<Item>> {
 
         @Override
         protected List<Item> doInBackground(String... urls) {
-            return getShoeShop(urls[0]);
+            return getShop(urls[0]);
         }
 
         @Override
@@ -429,10 +396,10 @@ public class MainActivity extends DrawerBaseActivity implements ItemAdapter.Item
     }
 
     private void reloadShop(){
-            adapter.setItemList(findShoeByCate());
+            adapter.setItemList(findItemByCate());
     }
 
-    protected List<Item> findShoeByCate(){
+    protected List<Item> findItemByCate(){
         List<Item> rs = new ArrayList<>();
         if (currentCategory.equalsIgnoreCase("all")){
             rs = ItemList;
