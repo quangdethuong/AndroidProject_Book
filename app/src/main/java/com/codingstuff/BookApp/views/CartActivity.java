@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -28,6 +29,9 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
     private CardView cardView;
     private CartAdapter cartAdapter;
 
+    public static double price = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         cartViewModel.getAllCartItems().observe(this, new Observer<List<ItemCart>>() {
             @Override
             public void onChanged(List<ItemCart> itemCarts) {
-                double price = 0;
                 cartAdapter.setShoeCartList(itemCarts);
                 for (int i = 0; i< itemCarts.size(); i++){
                     price = price + itemCarts.get(i).getTotalItemPrice();
@@ -51,11 +54,15 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartViewModel.deleteAllCartItems();
-                textView.setVisibility(View.INVISIBLE);
-                checkoutBtn.setVisibility(View.INVISIBLE);
-                totalCartPriceTv.setVisibility(View.INVISIBLE);
-                cardView.setVisibility(View.VISIBLE);
+                 cartViewModel.deleteAllCartItems();
+//                textView.setVisibility(View.INVISIBLE);
+//                checkoutBtn.setVisibility(View.INVISIBLE);
+//                totalCartPriceTv.setVisibility(View.INVISIBLE);
+//                cardView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
+//                intent.putExtras("price", price);
+                startActivity(intent);
+                finish();
             }
         });
     }
