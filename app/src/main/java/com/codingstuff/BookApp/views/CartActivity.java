@@ -54,13 +54,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 cartViewModel.deleteAllCartItems();
+//                 cartViewModel.deleteAllCartItems();
 //                textView.setVisibility(View.INVISIBLE);
 //                checkoutBtn.setVisibility(View.INVISIBLE);
 //                totalCartPriceTv.setVisibility(View.INVISIBLE);
 //                cardView.setVisibility(View.VISIBLE);
                 Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
-//                intent.putExtras("price", price);
                 startActivity(intent);
                 finish();
             }
